@@ -1,0 +1,7 @@
+apiVersion: v2
+name: accounts
+description: Mandacode accounts
+
+type: application
+
+version: 0.1.0-dev.0

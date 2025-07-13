@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "app.configMapName" . }}
+  labels:
+    app: {{ .Release.Name }}
+data:
+  VERIFY_EMAIL_URL: {{ .Values.app.verifyEmailUrl | quote }}
+
+  LOGIN_CODE_STORE_PREFIX: {{ .Values.app.loginCode.store.prefix | quote }}
+  EMAIL_CODE_STORE_PREFIX: {{ .Values.app.emailCode.store.prefix | quote }}
+
+  SESSION_NAME: {{ .Values.app.session.name | quote }}
+
+  LOGIN_CODE_TTL: {{ .Values.app.loginCode.ttl | quote }}
+  EMAIL_CODE_TTL: {{ .Values.app.emailCode.ttl | quote }}
+
+  GOOGLE_REDIRECT_URL: {{ .Values.app.oauth.google.redirectUrl | quote }}
+  NAVER_REDIRECT_URL: {{ .Values.app.oauth.naver.redirectUrl | quote }}
+  KAKAO_REDIRECT_URL: {{ .Values.app.oauth.kakao.redirectUrl | quote }}
+
+  TOKEN_CLIENT_ADDR: {{ .Values.app.tokenClient.address | quote }}
+
+  MAIL_WRITER_ADDRESS: {{ .Values.app.mailWriter.address | quote }}
+  MAIL_WRITER_TOPIC: {{ .Values.app.mailWriter.topic | quote }}
+
+  USER_EVENT_READER_ADDRESS: {{ .Values.app.userEventReader.address | quote }}
+  USER_EVENT_READER_TOPIC: {{ .Values.app.userEventReader.topic | quote }}
+  USER_EVENT_READER_GROUP_ID: {{ .Values.app.userEventReader.groupId | quote }}
