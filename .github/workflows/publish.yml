@@ -20,6 +20,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Fetch all history for accurate diff
 
       - name: Set up Helm
         uses: azure/setup-helm@v4.3.0
@@ -45,3 +47,20 @@ jobs:
             chart_file=$(ls packaged/$dir-*.tgz)
             helm push "$chart_file" ${{ env.REGISTRY_URL }}/$dir --force
           done
+
+      - name: Clean up
+        run: |
+          echo "Cleaning up packaged charts"
+          rm -rf packaged
+
+      - name: Notify success
+        run: |
+          echo "Helm charts published successfully."
+          echo "Changed directories: $changed_dirs"
+        if: success()
+
+      - name: Notify failure
+        run: |
+          echo "Failed to publish Helm charts."
+          echo "Changed directories: $changed_dirs"
+        if: failure()
