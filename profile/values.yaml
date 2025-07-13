@@ -1,0 +1,50 @@
+replicaCount: 1
+
+nameOverride: ""
+fullnameOverride: ""
+
+database:
+  existingSecret: ""
+  host: "postgres"
+  port: 5432
+  name: "profile"
+  sslMode: "disable"
+  auth:
+    username: ""
+    password: ""
+
+serviceAccount:
+  create: true
+  name: ""
+
+imagePullSecrets:
+  - name: regcred
+
+migration:
+  enabled: true
+  image:
+    repository: "your-docker-repo/profile-migration"
+    pullPolicy: "IfNotPresent"
+    tag: "latest"
+
+app:
+  image:
+    repository: "registry.mandacode.com/accounts/profile"
+    pullPolicy: "IfNotPresent"
+    tag: "latest"
+
+  autoscaling:
+    enabled: true
+    minReplicas: 1
+    maxReplicas: 10
+    targetCPUUtilizationPercentage: 80
+
+  service:
+    type: "ClusterIP"
+    port: 8080
+    targetPort: 8080
+
+  userEventReader:
+    address: "user-event-reader:8080"
+    topic: "user-event-topic"
+    groupId: "profile-event-group"

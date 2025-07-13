@@ -7,11 +7,11 @@ database:
   existingSecret: ""
   host: "postgres"
   port: 5432
-  name: "auth_db"
+  name: "auth"
   sslMode: "disable"
   auth:
-    username: "auth_user"
-    password: "auth_password"
+    username: ""
+    password: ""
 
 serviceAccount:
   create: true
@@ -23,13 +23,13 @@ imagePullSecrets:
 migration:
   enabled: true
   image:
-    repository: "your-docker-repo/auth-migration"
+    repository: "registry.mandacode.com/accounts/auth-migration"
     pullPolicy: "IfNotPresent"
     tag: "latest"
 
 app:
   image:
-    repository: "your-docker-repo/auth"
+    repository: "registry.mandacode.com/accounts/auth"
     pullPolicy: "IfNotPresent"
     tag: "latest"
 

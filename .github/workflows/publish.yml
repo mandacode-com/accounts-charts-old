@@ -1,0 +1,48 @@
+name: Publish Helm Chart
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "auth/**"
+      - "profile/**"
+
+jobs:
+  publish-helm-charts:
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+    env:
+      REGISTRY_URL: ${{ vars.REGISTRY_URL }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Helm
+        uses: azure/setup-helm@v3
+        with:
+          version: v4.3.0
+
+      - name: Log in to Helm registry (GHCR)
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY_URL }}
+          username: ${{ secrets.REGISTRY_USERNAME }}
+          password: ${{ secrets.REGISTRY_PASSWORD }}
+
+      - name: Detect changed charts and push
+        run: |
+          changed_dirs=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | \
+            grep 'Chart.yaml' | awk -F/ '{print $1}' | sort -u)
+
+          mkdir -p packaged
+
+          for dir in $changed_dirs; do
+            echo "Packaging and pushing chart: $dir"
+            helm dependency update "$dir" || true
+            helm package "$dir" --destination packaged
+            chart_file=$(ls packaged/$dir-*.tgz)
+            helm push "$chart_file" ${{ env.REGISTRY_URL }}/$dir --force
+          done
