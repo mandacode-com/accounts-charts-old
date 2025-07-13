@@ -50,6 +50,8 @@ spec:
           envFrom:
             - configMapRef:
                 name: {{ include "app.configMapName" . }}
+            - secretRef:
+                name: {{ include "app.smtp.secretName" . }}
 
       {{- with .Values.app.nodeSelector }}
       nodeSelector:
