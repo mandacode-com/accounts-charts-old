@@ -5,9 +5,11 @@ on:
     branches:
       - main
     paths:
+      - "user/**"
       - "auth/**"
       - "profile/**"
       - "mailer/**"
+      - "token/**"
 
 jobs:
   publish-helm-charts:
