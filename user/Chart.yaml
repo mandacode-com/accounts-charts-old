@@ -1,0 +1,6 @@
+apiVersion: v2
+name: user
+description: Accounts User Helm Chart
+
+type: application
+version: 0.1.0-dev.0

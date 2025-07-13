@@ -1,0 +1,39 @@
+replicaCount: 1
+
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  create: true
+  name: ""
+
+imagePullSecrets:
+  - name: regcred
+
+app:
+  image:
+    repository: "registry.mandacode.com/accounts/token"
+    pullPolicy: "IfNotPresent"
+    tag: "latest"
+
+  autoscaling:
+    enabled: true
+    minReplicas: 1
+    maxReplicas: 10
+    targetCPUUtilizationPercentage: 80
+
+  service:
+    type: "ClusterIP"
+    port: 50051
+    targetPort: 50051
+
+  token:
+    access:
+      duration: "3h"
+      privateKey: ""
+    refresh:
+      duration: "30d"
+      privateKey: ""
+    emailVerification:
+      duration: "24h"
+      privateKey: ""

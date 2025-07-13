@@ -43,6 +43,18 @@ spec:
           {{- end }}
           image: "{{ .Values.app.image.repository }}:{{ .Values.app.image.tag }}"
           imagePullPolicy: {{ .Values.app.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.app.service.port }}
+              protocol: TCP
+          {{- with .Values.app.livenessProbe }}
+          livenessProbe:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- with .Values.app.readinessProbe }}
+          readinessProbe:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
           {{- with .Values.app.resources }}
           resources:
             {{- toYaml . | nindent 12 }}
@@ -51,7 +63,7 @@ spec:
             - configMapRef:
                 name: {{ include "app.configMapName" . }}
             - secretRef:
-                name: {{ include "app.smtp.secretName" . }}
+                name: {{ include "database.secretName" . }}
 
       {{- with .Values.app.nodeSelector }}
       nodeSelector:
