@@ -33,6 +33,11 @@ jobs:
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
 
+      - name: Install yq
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y yq
+
       - name: Detect changed charts and push
         run: |
           changed_dirs=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | \
@@ -43,9 +48,14 @@ jobs:
           for dir in $changed_dirs; do
             echo "Packaging and pushing chart: $dir"
             helm dependency update "$dir" || true
-            helm package "$dir" --destination packaged
-            chart_file=$(ls packaged/$dir-*.tgz)
-            helm push "$chart_file" ${{ env.REGISTRY_URL }}
+
+            # Get packaged chart path from output
+            chart_path=$(helm package "$dir" --destination packaged | grep 'Successfully packaged chart and saved it to:' | awk '{print $NF}')
+
+            # Extract chart name from Chart.yaml
+            chart_name=$(yq '.name' "$dir/Chart.yaml")
+
+            helm push "$chart_path" ${{ env.REGISTRY_URL }}
           done
 
       - name: Clean up
