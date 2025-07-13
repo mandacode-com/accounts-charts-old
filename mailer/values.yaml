@@ -1,0 +1,37 @@
+replicaCount: 1
+
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  create: true
+  name: ""
+
+imagePullSecrets:
+  - name: regcred
+
+app:
+  image:
+    repository: "registry.mandacode.com/accounts/mailer"
+    pullPolicy: "IfNotPresent"
+    tag: "latest"
+
+  autoscaling:
+    enabled: true
+    minReplicas: 1
+    maxReplicas: 10
+    targetCPUUtilizationPercentage: 80
+
+  smtp:
+    existingSecret: ""
+    sender: "MandaCode"
+    host: "smtp.example.com"
+    port: 587
+    auth:
+      username: ""
+      password: ""
+
+  kafka:
+    address: "kafka:9092"
+    topic: "mailer"
+    groupId: "mailer-group"
