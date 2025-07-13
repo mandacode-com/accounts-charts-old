@@ -45,7 +45,7 @@ jobs:
             helm dependency update "$dir" || true
             helm package "$dir" --destination packaged
             chart_file=$(ls packaged/$dir-*.tgz)
-            helm push "$chart_file" ${{ env.REGISTRY_URL }}/$dir --force
+            helm push "$chart_file" ${{ env.REGISTRY_URL }}/$dir
           done
 
       - name: Clean up
