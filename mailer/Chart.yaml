@@ -1,5 +1,7 @@
 apiVersion: v2
 name: mailer
-description: A Helm chart for Kubernetes
+description: Accounts Mailer Helm Chart
+
 type: application
+
 version: 0.1.0-dev.0

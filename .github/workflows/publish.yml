@@ -23,7 +23,6 @@ jobs:
 
       - name: Set up Helm
         uses: azure/setup-helm@v4.3.0
-        id: install
 
       - name: Log in to Helm registry (GHCR)
         uses: docker/login-action@v3

@@ -1,6 +1,6 @@
 apiVersion: v2
 name: accounts-auth
-description: A Helm chart for deploying the Accounts Auth service
+description: Accounts Auth Helm Chart
 
 type: application
 
