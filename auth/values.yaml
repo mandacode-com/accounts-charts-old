@@ -88,7 +88,7 @@ app:
 
   tokenClient:
     address: "token-client:8080"
-  mailWriter:
+  mailEventWriter:
     address: "mail-writer:8080"
     topic: "mail-topic"
   userEventReader:

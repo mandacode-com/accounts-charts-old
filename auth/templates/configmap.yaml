@@ -21,9 +21,9 @@ data:
 
   TOKEN_CLIENT_ADDR: {{ .Values.app.tokenClient.address | quote }}
 
-  MAIL_WRITER_ADDRESS: {{ .Values.app.mailWriter.address | quote }}
-  MAIL_WRITER_TOPIC: {{ .Values.app.mailWriter.topic | quote }}
+  MAIL_WRITER_ADDRESS: {{ .Values.app.mailEventWriter.address | quote }}
+  MAIL_WRITER_TOPIC: {{ .Values.app.mailEventWriter.topic | quote }}
 
-  USER_EVENT_READER_ADDRESS: {{ .Values.app.userEventReader.address | quote }}
+  USER_EVENT_READER_BROKERS: {{ .Values.app.userEventReader.address | quote }}
   USER_EVENT_READER_TOPIC: {{ .Values.app.userEventReader.topic | quote }}
   USER_EVENT_READER_GROUP_ID: {{ .Values.app.userEventReader.groupId | quote }}

@@ -5,5 +5,5 @@ metadata:
   labels:
     app: {{ .Release.Name }}
 data:
-  USER_EVENT_WRITER_ADDRESS: {{ .Values.app.userEventReader.address | quote }}
-  USER_EVENT_WRITER_TOPIC: {{ .Values.app.userEventReader.topic | quote }}
+  USER_EVENT_WRITER_ADDRESS: {{ .Values.app.userEventWriter.address | quote }}
+  USER_EVENT_WRITER_TOPIC: {{ .Values.app.userEventWriter.topic | quote }}

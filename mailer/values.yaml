@@ -33,7 +33,7 @@ app:
       username: ""
       password: ""
 
-  kafka:
+  mailEventReader:
     address: "kafka:9092"
     topic: "mailer"
     groupId: "mailer-group"

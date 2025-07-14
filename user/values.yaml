@@ -51,7 +51,6 @@ app:
       port: 50051
       targetPort: 50051
 
-  userEventReader:
-    address: "user-event-reader:8080"
+  userEventWriter:
+    address: "kafka-event-bus:8080"
     topic: "user-event-topic"
-    groupId: "profile-event-group"

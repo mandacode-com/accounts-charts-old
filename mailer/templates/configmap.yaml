@@ -5,7 +5,7 @@ metadata:
   labels:
     app: {{ .Release.Name }}
 data:
-  KAFKA_ADDRESS: {{ .Values.app.kafka.address | quote }}
-  KAFKA_TOPIC: {{ .Values.app.kafka.topic | quote }}
-  KAFKA_GROUP_ID: {{ .Values.app.kafka.groupId | quote }}
-  MAIL_SENDER: {{ .Values.app.smtp.sender | quote }}
+  KAFKA_MAIL_BROKERS: {{ .Values.app.mailEventReader.address | quote }}
+  KAFKA_MAIL_TOPIC: {{ .Values.app.mailEventReader.topic | quote }}
+  KAFKA_MAIL_GROUP_ID: {{ .Values.app.mailEventReader.groupId | quote }}
+  SMTP_SENDER: {{ .Values.app.smtp.sender | quote }}
