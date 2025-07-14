@@ -5,6 +5,8 @@ fullnameOverride: ""
 
 serviceAccount:
   create: true
+  automount: true
+  annotations: {}
   name: ""
 
 imagePullSecrets:
@@ -28,6 +30,7 @@ app:
     targetPort: 50051
 
   token:
+    existingSecret: ""
     access:
       duration: "3h"
       privateKey: ""

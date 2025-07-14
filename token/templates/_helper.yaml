@@ -67,3 +67,11 @@ Secret names
 {{- printf "%s-smtp-secret" (include "app.name" .) }}
 {{- end }}
 {{- end }}
+
+{{- define "app.token.secretName" }}
+{{- if .Values.app.token.existingSecret }}
+{{- .Values.app.token.existingSecret }}
+{{- else -}}
+{{- printf "%s-token-secret" (include "app.name" .) }}
+{{- end }}
+{{- end }}
