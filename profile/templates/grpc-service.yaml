@@ -5,11 +5,11 @@ metadata:
   labels:
     {{- include "app.labels" . | nindent 4 }}
 spec:
-  type: {{ .Values.app.service.type }}
+  type: {{ .Values.app.service.grpc.type }}
   ports:
-    - port: {{ .Values.app.service.http.port }}
-      targetPort: {{ .Values.app.service.http.targetPort }}
+    - port: {{ .Values.app.service.grpc.port }}
+      targetPort: {{ .Values.app.service.grpc.targetPort }}
       protocol: TCP
-      name: http
+      name: grpc
   selector:
     {{- include "app.selectorLabels" . | nindent 4 }}

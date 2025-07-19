@@ -45,9 +45,14 @@ app:
     targetCPUUtilizationPercentage: 80
 
   service:
-    type: "ClusterIP"
-    port: 8080
-    targetPort: 8080
+    http:
+      type: "ClusterIP"
+      port: 8080
+      targetPort: 8080
+    grpc:
+      type: "ClusterIP"
+      port: 50051
+      targetPort: 50051
 
   userEventReader:
     address: "user-event-reader:8080"

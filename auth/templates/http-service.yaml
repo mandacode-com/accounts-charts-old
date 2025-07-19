@@ -1,14 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "app.name" . }}
+  name: {{ include "app.name" . }}-http
   labels:
     {{- include "app.labels" . | nindent 4 }}
 spec:
-  type: {{ .Values.app.service.type }}
+  type: {{ .Values.app.service.http.type }}
   ports:
-    - port: {{ .Values.app.service.port }}
-      targetPort: {{ .Values.app.service.targetPort }}
+    - port: {{ .Values.app.service.http.port }}
+      targetPort: {{ .Values.app.service.http.targetPort }}
       protocol: TCP
       name: http
   selector:

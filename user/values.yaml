@@ -49,10 +49,6 @@ app:
       type: "ClusterIP"
       port: 8080
       targetPort: 8080
-    grpc:
-      type: "ClusterIP"
-      port: 50051
-      targetPort: 50051
 
   userEventWriter:
     address: "kafka-event-bus:8080"
