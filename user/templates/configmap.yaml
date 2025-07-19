@@ -29,7 +29,7 @@ data:
   PROFILE_CLIENT_ADDRESS: {{ .Values.app.profileClient.address | quote }}
 
   # Token client configuration
-  TOKEN_CLIENT_ADDR: {{ .Values.app.tokenClient.address | quote }}
+  TOKEN_CLIENT_ADDRESS: {{ .Values.app.tokenClient.address | quote }}
 
   # User ID header key
   UID_HEADER_KEY: {{ .Values.app.uidHeaderKey | quote }}
