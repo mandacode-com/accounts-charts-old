@@ -9,6 +9,9 @@ database:
   port: 5432
   name: "profile"
   sslMode: "disable"
+  migration:
+    username: ""
+    password: ""
   auth:
     username: ""
     password: ""

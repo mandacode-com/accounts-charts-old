@@ -18,7 +18,10 @@ spec:
         - name: migrate
           image: "{{ .Values.migration.image.repository }}:{{ .Values.migration.image.tag }}"
           imagePullPolicy: {{ .Values.migration.image.pullPolicy }}
-          envFrom:
-            - secretRef:
-                name: {{ include "database.secretName" . }}
+          env:
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "database.secretName" . }}
+                  key: MIGRATION_DATABASE_URL
 {{- end}}
