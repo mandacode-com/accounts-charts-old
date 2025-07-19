@@ -28,7 +28,7 @@ imagePullSecrets:
 migration:
   enabled: true
   image:
-    repository: "your-docker-repo/profile-migration"
+    repository: "registry.mandacode.com/accounts/profile-migration"
     pullPolicy: "IfNotPresent"
     tag: "latest"
 
