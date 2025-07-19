@@ -68,14 +68,6 @@ Secret names
 {{- end }}
 {{- end }}
 
-{{- define "app.emailCode.secretName" }}
-{{- if .Values.app.emailCode.existingSecret }}
-{{- .Values.app.emailCode.existingSecret }}
-{{- else -}}
-{{- printf "%s-email-code-secret" (include "app.name" .) }}
-{{- end }}
-{{- end }}
-
 {{- define "app.loginCode.secretName" }}
 {{- if .Values.app.loginCode.existingSecret }}
 {{- .Values.app.loginCode.existingSecret }}

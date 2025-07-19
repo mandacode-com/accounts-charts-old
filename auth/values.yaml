@@ -49,18 +49,11 @@ app:
   loginCode:
     ttl: "5m"
     store:
+      prefix: "auth-login-code:"
       address: "redis:6379"
       password: ""
       db: "0"
       hashKey: "loginCode"
-
-  emailCode:
-    ttl: "5m"
-    store:
-      address: "redis:6379"
-      password: ""
-      db: "0"
-      hashKey: "emailCode"
 
   session:
     name: "auth-session"
@@ -69,8 +62,6 @@ app:
       password: ""
       db: "0"
       hashKey: "session"
-
-  verifyEmailUrl: "https://example.com/verify-email"
 
   oauth:
     google:
@@ -88,10 +79,12 @@ app:
 
   tokenClient:
     address: "token-client:8080"
-  mailEventWriter:
-    address: "mail-writer:8080"
-    topic: "mail-topic"
+
   userEventReader:
     address: "user-event-reader:8080"
     topic: "user-event-topic"
     groupId: "auth-user-event-group"
+
+  signupApi:
+    endpoint: "https://example.com/api/signup"
+    timeout: "10s"

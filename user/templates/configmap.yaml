@@ -5,5 +5,31 @@ metadata:
   labels:
     app: {{ .Release.Name }}
 data:
+  # User event service configuration
   USER_EVENT_WRITER_ADDRESS: {{ .Values.app.userEventWriter.address | quote }}
   USER_EVENT_WRITER_TOPIC: {{ .Values.app.userEventWriter.topic | quote }}
+  
+  # Email verification service configuration
+  EMAIL_EVENT_WRITER_ADDRESS: {{ .Values.app.emailEventWriter.address | quote }}
+  EMAIL_EVENT_WRITER_TOPIC: {{ .Values.app.emailEventWriter.topic | quote }}
+
+  # Email code service configuration
+  EMAIL_CODE_STORE_PREFIX: {{ .Values.app.emailCode.store.prefix | quote }}
+  EMAIL_CODE_TTL: {{ .Values.app.emailCode.ttl | quote }}
+
+  # Email verification configuration
+  EMAIL_VERIFICATION_LINK: {{ .Values.app.verifyEmail.link | quote }}
+  MAX_SENT_EMAILS: {{ .Values.app.verifyEmail.maxSentEmails | quote }}
+  MAX_SENT_EMAILS_DURATION: {{ .Values.app.verifyEmail.maxSentEmailsDuration | quote }}
+
+  # Authentication client configuration
+  AUTH_CLIENT_ADDRESS: {{ .Values.app.authClient.address | quote }}
+
+  # Profile client configuration
+  PROFILE_CLIENT_ADDRESS: {{ .Values.app.profileClient.address | quote }}
+
+  # Token client configuration
+  TOKEN_CLIENT_ADDR: {{ .Values.app.tokenClient.address | quote }}
+
+  # User ID header key
+  UID_HEADER_KEY: {{ .Values.app.uidHeaderKey | quote }}

@@ -8,4 +8,6 @@ data:
   USER_EVENT_READER_BROKERS: {{ .Values.app.userEventReader.address | quote }}
   USER_EVENT_READER_TOPIC: {{ .Values.app.userEventReader.topic | quote }}
   USER_EVENT_READER_GROUP_ID: {{ .Values.app.userEventReader.groupId | quote }}
-  HTTP_UID_HEADER: {{ .Values.app.httpUidHeader | quote }}
+
+  # User ID header key
+  UID_HEADER_KEY: {{ .Values.app.uidHeaderKey | quote }}

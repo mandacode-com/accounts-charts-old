@@ -54,3 +54,30 @@ app:
   userEventWriter:
     address: "kafka-event-bus:8080"
     topic: "user-event-topic"
+
+  emailEventWriter:
+    address: "mail-writer:8080"
+    topic: "mail-topic"
+
+  verifyEmail:
+    link: ""
+    maxSentEmails: 5
+    maxSentEmailsDuration: "1h"
+
+  emailCode:
+    ttl: "5m"
+    store:
+      prefix: "email-code:"
+      address: "redis:6379"
+      password: ""
+      db: "0"
+      hashKey: "emailCode"
+
+  authClient:
+    address: "auth-client:8080"
+  tokenClient:
+    address: "token-client:8080"
+  profileClient:
+    address: "profile-client:8080"
+
+  uidHeaderKey: "X-User-ID"

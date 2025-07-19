@@ -64,6 +64,8 @@ spec:
                 name: {{ include "app.configMapName" . }}
             - secretRef:
                 name: {{ include "database.secretName" . }}
+            - secretRef:
+                name: {{ include "app.emailCode.secretName" . }}
 
       {{- with .Values.app.nodeSelector }}
       nodeSelector:

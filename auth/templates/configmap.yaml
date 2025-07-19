@@ -5,25 +5,26 @@ metadata:
   labels:
     app: {{ .Release.Name }}
 data:
-  VERIFY_EMAIL_URL: {{ .Values.app.verifyEmailUrl | quote }}
-
+  # Login code service configuration
   LOGIN_CODE_STORE_PREFIX: {{ .Values.app.loginCode.store.prefix | quote }}
-  EMAIL_CODE_STORE_PREFIX: {{ .Values.app.emailCode.store.prefix | quote }}
+  LOGIN_CODE_TTL: {{ .Values.app.loginCode.ttl | quote }}
 
+  # Session configuration
   SESSION_NAME: {{ .Values.app.session.name | quote }}
 
-  LOGIN_CODE_TTL: {{ .Values.app.loginCode.ttl | quote }}
-  EMAIL_CODE_TTL: {{ .Values.app.emailCode.ttl | quote }}
-
+  # OAuth configuration
   GOOGLE_REDIRECT_URL: {{ .Values.app.oauth.google.redirectUrl | quote }}
   NAVER_REDIRECT_URL: {{ .Values.app.oauth.naver.redirectUrl | quote }}
   KAKAO_REDIRECT_URL: {{ .Values.app.oauth.kakao.redirectUrl | quote }}
 
+  # Token client configuration
   TOKEN_CLIENT_ADDR: {{ .Values.app.tokenClient.address | quote }}
 
-  MAIL_WRITER_ADDRESS: {{ .Values.app.mailEventWriter.address | quote }}
-  MAIL_WRITER_TOPIC: {{ .Values.app.mailEventWriter.topic | quote }}
-
+  # User event service configuration
   USER_EVENT_READER_BROKERS: {{ .Values.app.userEventReader.address | quote }}
   USER_EVENT_READER_TOPIC: {{ .Values.app.userEventReader.topic | quote }}
   USER_EVENT_READER_GROUP_ID: {{ .Values.app.userEventReader.groupId | quote }}
+
+  # Signup API configuration
+  SIGNUP_API_ENDPOINT: {{ .Values.app.signupApi.endpoint | quote }}
+  SIGNUP_API_TIMEOUT: {{ .Values.app.signupApi.timeout | quote }}

@@ -65,8 +65,6 @@ spec:
             - secretRef:
                 name: {{ include "database.secretName" . }}
             - secretRef:
-                name: {{ include "app.emailCode.secretName" . }}
-            - secretRef:
                 name: {{ include "app.loginCode.secretName" . }}
             - secretRef:
                 name: {{ include "app.session.secretName" . }}

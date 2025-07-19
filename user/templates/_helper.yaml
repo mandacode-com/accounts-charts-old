@@ -67,3 +67,12 @@ Secret names
 {{- printf "%s-db-secret" (include "app.name" .) }}
 {{- end }}
 {{- end }}
+
+{{- define "app.emailCode.secretName" }}
+{{- if .Values.app.emailCode.existingSecret }}
+{{- .Values.app.emailCode.existingSecret }}
+{{- else -}}
+{{- printf "%s-email-code-secret" (include "app.name" .) }}
+{{- end }}
+{{- end }}
+
