@@ -18,7 +18,9 @@ spec:
         {{- with .Values.app.podAnnotations }}
         {{- toYaml . | nindent 8 }}
         {{- end }}
-        configmap.checksum: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
+        checksum/configmap: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
+        checksum/db-secret: {{ include (print $.Template.BasePath "/db-secret.yaml") . | sha256sum }}
+        checksum/email-code-secret: {{ include (print $.Template.BasePath "/email-code-secret.yaml") . | sha256sum }}
       labels:
         {{- include "app.labels" . | nindent 8 }}
         {{- with .Values.app.podLabels }}
