@@ -26,7 +26,8 @@ app:
 
   smtp:
     existingSecret: ""
-    sender: "MandaCode"
+    senderName: "MandaCode"
+    senderEmail: ""
     host: "smtp.example.com"
     port: 587
     auth:

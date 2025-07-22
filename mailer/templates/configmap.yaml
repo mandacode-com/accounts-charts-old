@@ -8,4 +8,5 @@ data:
   KAFKA_MAIL_BROKERS: {{ .Values.app.mailEventReader.address | quote }}
   KAFKA_MAIL_TOPIC: {{ .Values.app.mailEventReader.topic | quote }}
   KAFKA_MAIL_GROUP_ID: {{ .Values.app.mailEventReader.groupId | quote }}
-  SMTP_SENDER: {{ .Values.app.smtp.sender | quote }}
+  SMTP_SENDER_NAME: {{ .Values.app.smtp.senderName | quote }}
+  SMTP_SENDER_EMAIL: {{ .Values.app.smtp.senderEmail | quote }}
