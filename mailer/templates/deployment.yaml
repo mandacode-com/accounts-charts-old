@@ -19,6 +19,7 @@ spec:
         {{- toYaml . | nindent 8 }}
         {{- end }}
         checksum/configmap: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
+        checksum/smtp-secret: {{ include (print $.Template.BasePath "/smtp-secret.yaml") . | sha256sum }}
       labels:
         {{- include "app.labels" . | nindent 8 }}
         {{- with .Values.app.podLabels }}
