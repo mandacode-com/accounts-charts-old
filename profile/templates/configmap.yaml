@@ -14,3 +14,4 @@ data:
 
   INITIAL_NICKNAME_LENGTH: {{ .Values.app.initialNicknameLength | quote }}
   MAX_NICKNAME_RETRIES: {{ .Values.app.maxNicknameRetries | quote }}
+  NICKNAME_PREFIX: {{ .Values.app.nicknamePrefix | quote }}

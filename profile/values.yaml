@@ -63,3 +63,4 @@ app:
 
   initialNicknameLength: 8
   maxNicknameRetries: 5
+  nicknamePrefix: "user_"
