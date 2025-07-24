@@ -60,3 +60,6 @@ app:
     groupId: "profile-event-group"
 
   uidHeaderKey: "X-User-ID"
+
+  initialNicknameLength: 8
+  maxNicknameRetries: 5

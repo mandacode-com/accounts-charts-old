@@ -11,3 +11,6 @@ data:
 
   # User ID header key
   UID_HEADER_KEY: {{ .Values.app.uidHeaderKey | quote }}
+
+  INITIAL_NICKNAME_LENGTH: {{ .Values.app.initialNicknameLength | quote }}
+  MAX_NICKNAME_RETRIES: {{ .Values.app.maxNicknameRetries | quote }}
